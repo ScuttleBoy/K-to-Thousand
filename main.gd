@@ -12,17 +12,12 @@ var counter: int = 0
 var in_loop: String
 var changed
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	refresh_timer.timeout.connect(on_refresh_timeout)
 	var root = tree.create_item()
 	tree.hide_root = true
-	tree.set_column_title(0,"History")
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	tree.set_column_title(0, "History")
 
 
 func _on_line_edit_text_submitted(new_text: String) -> void:
@@ -35,8 +30,8 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 		return
 	
 	if new_text.to_lower().ends_with("k"):
-		for char in new_text.to_lower():
-			if char == "k":
+		for ch in new_text.to_lower():
+			if ch == "k":
 				multiplier *= 1000
 		our_text = new_text.to_lower().replacen("k","")
 	else:
